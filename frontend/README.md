@@ -14,6 +14,16 @@ pnpm dev
 bun dev
 ```
 
+### Environment Variables
+
+For the frontend to communicate with the backend, you need to set the `NEXT_PUBLIC_API_URL` environment variable.
+
+1. Copy `.env.example` to `.env.local`:
+   ```bash
+   cp .env.example .env.local
+   ```
+2. Edit `.env.local` if your backend is running on a different port than `http://localhost:8000`.
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
