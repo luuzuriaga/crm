@@ -22,7 +22,8 @@ export default function EmailComposer({ contact, onClose }: { contact?: any, onC
   const [body, setBody] = useState(EMAIL_TEMPLATES[0].body.replace('{{name}}', contact?.name || 'Cliente'));
   const [isSending, setIsSending] = useState(false);
 
-  const handleTemplateChange = (id: string) => {
+  const handleTemplateChange = (id: string | null) => {
+    if (!id) return;
     const t = EMAIL_TEMPLATES.find(temp => temp.id === id);
     if (t) {
       setTemplate(id);
