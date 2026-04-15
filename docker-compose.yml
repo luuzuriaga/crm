@@ -1,0 +1,42 @@
+services:
+  # --- BASE DE DATOS LOCAL (DESACTIVADA PARA SUPABASE) ---
+  # db:
+  #   image: postgres:15
+  #   container_name: crm_db
+  #   restart: always
+  #   # Cargamos las credenciales desde el .env
+  #   env_file:
+  #     - ./backend/.env
+  #   ports:
+  #     - "5432:5432" # Puerto para DBeaver
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+  # --- BACKEND (Versión de tu colega + .env) ---
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "8000:8000" # Puerto para Swagger (http://localhost:8000/docs)
+    env_file:
+      - ./backend/.env
+#    depends_on:
+#      - db
+    volumes:
+      - ./backend:/app # Para que tus cambios se vean sin reiniciar todo
+
+  # --- FRONTEND (Opcional, lo dejamos como lo puso tu colega) ---
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000" # Puerto para React (http://localhost:3000)
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

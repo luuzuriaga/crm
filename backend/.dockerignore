@@ -1,0 +1,23 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Local environment files
+.env
+.env.*
+
+# VCS and editor files
+.git/
+.vscode/
+.idea/

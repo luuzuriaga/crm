@@ -1,0 +1,45 @@
+# Python
+# Virtual environment
+venv/
+.venv/
+
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# IDE-specific files
+.idea/  # For PyCharm/IntelliJ
+.vscode/ # Optional, depends on project setup
+*.swp
+*~
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# React / Node.js
+# Dependency directory
+node_modules/
+
+# Build and output directories
+build/
+dist/
+*.env # Local environment variables
+.eslintcache
+
+# Logs and runtime data
+npm-debug.log*
+yarn-debug.log*
+
+# OS-specific files
+.DS_Store
+
+# Secretos y Variables de Entorno
+.env
+.env.local
+.env.*.local
+
+AGENTS.md
