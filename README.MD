@@ -1,131 +1,122 @@
-# 🧩 Startup CRM
+# 🧩 Startup CRM — Intelligent Relationship Management
 
-## 📌 Descripción General
-Startup CRM es una aplicación diseñada para centralizar la gestión de contactos, comunicaciones y el seguimiento de clientes potenciales (leads) y clientes activos.
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-El sistema permite gestionar conversaciones en tiempo real mediante la integración de canales como WhatsApp y correo electrónico, facilitando la automatización de seguimientos y la organización de contactos según su etapa dentro del proceso de ventas.
+> **Elevating Startup Growth through Intelligent Communication and Seamless lead tracking.**
+
+Startup CRM is a high-performance, professional-grade dashboard designed for modern companies. It centralizes WhatsApp, email, and funnel management into a single "Source of Truth," enabling teams to focus on closing deals rather than managing spreadsheets.
 
 ---
-###
-## 🎯 Objetivo del Proyecto
-Desarrollar un CRM inteligente orientado a startups que permita:
 
-- Gestionar contactos y clasificarlos según su etapa en el proceso de ventas.
-- Centralizar la comunicación con clientes.
-- Automatizar tareas de seguimiento.
-- Visualizar métricas clave del negocio.
-- Facilitar la colaboración entre equipos.
+## 📖 Project Vision
 
-# ⚙️ Backend API - CRM Project
+### **Sector de Negocio**
+**Cross-Industry:** Diseñado para ser versátil y adaptable a cualquier industria que requiera una gestión de clientes dinámica y omnicanal.
 
-Este es el microservicio de backend para la aplicación web. Está construido con **FastAPI** y diseñado para ejecutarse en contenedores Docker, conectándose a una base de datos **PostgreSQL**.
+### **Necesidad del Cliente**
+Las startups enfrentan el reto de gestionar múltiples canales de comunicación (WhatsApp, Email) de forma fragmentada. Buscan un CRM inteligente que:
+- Integre nativamente **WhatsApp Cloud API** y **Email**.
+- Permita gestionar conversaciones en **tiempo real**.
+- Automatice seguimientos y segmente usuarios de manera eficiente.
+- Ofrezca una experiencia **colaborativa y asincrónica**.
+
+### **Objetivo Principal**
+Desarrollar un centro de mando inteligente que centralice la comunicación y automatice el ciclo de vida del cliente, priorizando la simplicidad y el impacto visual.
+
+---
+
+## ✨ Características Principales
+
+| Característica | Descripción |
+| :--- | :--- |
+| **🚀 Gestión de Leads & Funnel** | Kanban dinámico (Drag-and-Drop) para mover prospectos entre etapas (Prospecto, Seguimiento, Cliente). |
+| **💬 Comunicación Omnicanal** | Integración nativa con WhatsApp Cloud API y SMTP/Brevo para centralizar el historial de mensajes. |
+| **📧 Email con Plantillas** | Envío y registro de correos electrónicos utilizando etiquetas personalizables y plantillas predefinidas. |
+| **⏰ Recordatorios Automáticos** | Sistema de alertas para tareas críticas y seguimientos pendientes para que nunca se pierda un lead. |
+| **📊 Panel de Métricas (KPIs)** | Visualización de métricas clave: tasa de conversión, contactos activos y volumen de mensajes. |
+| **📥 Exportación de Datos** | Generación de reportes en formatos **CSV** y **PDF** para análisis externo. |
+| **🛠️ Personalización Total** | Configuración de etiquetas, filtros guardados y vistas personalizadas por el usuario. |
+
+---
 
 ## 🛠️ Stack Tecnológico
 
-* **Framework:** [FastAPI](https://fastapi.tiangolo.com/)
-* **Lenguaje:** Python 3.12
-* **ORM:** SQLAlchemy
-* **Base de Datos:** PostgreSQL 15
-* **Servidor ASGI:** Uvicorn
-* **Infraestructura:** Docker & Docker Compose (Multi-stage build)
+### **Frontend**
+- **Next.js 16 (App Router):** Máximo rendimiento y SEO.
+- **React 19:** Con las últimas funcionalidades concurrentes.
+- **Tailwind CSS 4:** Estilizado moderno y ultra-rápido.
+- **TanStack Query (React Query):** Gestión de estado de servidor y caching.
+- **Framer Motion:** Micro-animaciones para una experiencia fluida.
+- **Zustand:** Estado global ligero y eficiente.
 
+### **Backend**
+- **FastAPI:** Framework de alto rendimiento para Python.
+- **PostgreSQL 15:** Base de datos relacional robusta.
+- **SQLAlchemy:** ORM potente para gestión de modelos.
+- **Docker:** Orquestación completa mediante Docker Compose.
 
+---
 
-## 🚀 Configuración del Entorno de Desarrollo
+## 🔌 Integraciones Externas
 
-### 1. Variables de Entorno
-Antes de levantar el servidor, debes configurar las credenciales de la base de datos. 
+El corazón del CRM reside en su capacidad de conectar con plataformas líderes:
+- **Meta (WhatsApp Cloud API):** Conversaciones directas e historial integrado.
+- **Brevo / SMTP:** Motor de envío de correos transaccionales y de marketing.
 
-1. Copia el archivo de ejemplo:
+---
 
-```
-cp .env.example .env
-```
+## 🚀 Guía de Instalación Local
 
-2. Asegúrate de que el archivo .env tenga la siguiente estructura (sin usar comillas):
+### Requisitos Previos
+- **Docker & Docker Compose**
+- **Node.js 18+** (Si se desea ejecutar fuera de Docker)
+- **Python 3.12+** (Si se desea ejecutar fuera de Docker)
 
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=admin
-POSTGRES_DB=crm_db
-DATABASE_URL=postgresql://postgres:admin@db:5432/crm_db
-
-2. Ejecución con Docker (Recomendado)
-El proyecto utiliza un Dockerfile optimizado en múltiples etapas (multi-stage) y se apoya en un script entrypoint.sh para levantar Uvicorn de forma segura.
-
-Desde la raíz del proyecto (una carpeta atrás), ejecuta:
-
+### Paso 1: Clonar e Inicializar
 ```bash
-docker compose up --build -d backend
+git clone https://github.com/No-Country-simulation/S03-26-Equipo-04-Web-App-Development.git
+cd S03-26-Equipo-04-Web-App-Development
 ```
 
-
-## 📚 Documentación de la API
-
-FastAPI genera automáticamente la documentación interactiva. Una vez que el contenedor esté corriendo, puedes acceder a:
-
-Swagger UI (Pruebas interactivas): http://localhost:8000/docs
-
-ReDoc (Documentación alternativa): http://localhost:8000/redoc
-
-
-
-
-# 🚀 CRM Startup - Guía de Configuración Local
-
-Este proyecto utiliza **Docker** y **Docker Compose** para orquestar los servicios de Base de Datos (PostgreSQL), Backend (FastAPI) y Frontend (React).
-
----
-
-## 🛠 Requisitos Previos
-
-* **Docker Desktop** instalado y en ejecución.
-* Si usas Windows, asegúrate de tener configurado **WSL2** con Ubuntu.
-
----
-
-## ⚙️ Configuración Inicial
-
-### 1. Variables de Entorno (.env)
-Para que el sistema funcione, es **obligatorio** crear un archivo `.env` dentro de la carpeta `/backend`. 
-
-> **Nota importante:** No utilices comillas (`" "`) en los valores de las variables, ya que Docker las interpreta como parte de la cadena de texto.
-
-**Contenido recomendado para `backend/.env`:**
+### Paso 2: Configuración de Entorno
+Crea un archivo `.env` en la carpeta `backend/`:
 ```env
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=admin
 POSTGRES_DB=crm_db
 DATABASE_URL=postgresql://postgres:admin@db:5432/crm_db
+```
 
-2. Archivo de ejemplo
-Se ha incluido un archivo backend/.env.example con la estructura base. Puedes copiarlo y renombrarlo:
-cp backend/.env.example backend/.env
-
-🚀 Ejecución del Proyecto
-Desde la raíz del repositorio (donde se encuentra el archivo docker-compose.yml), ejecuta el siguiente comando:
-
-Bash
+### Paso 3: Levantar con Docker (Recomendado)
+```bash
 docker compose up --build -d
-🔍 Acceso a los servicios
-Una vez que los contenedores estén en verde, puedes acceder a:
+```
 
-Backend (Swagger UI): http://localhost:8000/docs
+Una vez levantado, accede a:
+- **Frontend Dashboard:** [http://localhost:3000](http://localhost:3000)
+- **Documentación API (Swagger):** [http://localhost:8000/docs](http://localhost:8000/docs)
 
-Frontend (React/Vite): http://localhost:3000
+---
 
-Base de Datos: Puerto 5432 (Conexión local vía DBeaver o similar).
+## 📋 Entregables Esperados
 
-🆘 Solución de Problemas (Troubleshooting)
-❌ Error: ArgumentError: Expected string or URL object, got None
-Este error ocurre cuando Python no encuentra la variable DATABASE_URL.
+- [x] **Prototipo Funcional:** Flujos básicos de usuario, comunicación y segmentación.
+- [x] **Panel de Métricas:** Visualización de KPIs clave (contactos activos, mensajes, tasa de respuesta).
+- [ ] **Documentación de Endpoints:** Guía detallada de la API (Swagger integrado).
+- [ ] **Exportación Multi-formato:** Soporte completo para PDF/CSV.
 
-Verifica que el archivo .env esté dentro de la carpeta backend/.
+---
 
-Asegúrate de que el nombre sea exactamente DATABASE_URL (en mayúsculas).
+## 🆘 Troubleshooting & Soporte
 
-❌ Error: exec format error o falla en entrypoint.sh
-Si trabajas desde Windows/WSL, el script de arranque puede tener caracteres invisibles de Windows. Corrígelo con:
+- **Error de Conexión DB:** Asegúrese de que el archivo `.env` no tenga comillas en los valores.
+- **Scripts de Arranque (Windows):** Si `entrypoint.sh` falla, ejecute `sed -i 's/\r$//' backend/entrypoint.sh`.
 
-Bash
-sed -i 's/\r$//' backend/entrypoint.sh
-chmod +x backend/entrypoint.sh
+---
+
+<p align="center">
+  Desarrollado con ❤️ para el ecosistema Startup.
+</p>

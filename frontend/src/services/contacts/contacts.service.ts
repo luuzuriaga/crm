@@ -1,4 +1,5 @@
 import api from '../api';
+import { MOCK_CONTACTS } from '@/constants/mock-contacts';
 
 export interface Contact {
   id: number;
@@ -12,28 +13,56 @@ export interface Contact {
   created_at?: string;
 }
 
+// In-memory storage for the demo
+let localContacts: Contact[] = [...MOCK_CONTACTS];
+
 export const contactsService = {
   getAll: async (stage?: string): Promise<Contact[]> => {
-    const response = await api.get('/contacts/', { params: { stage } });
-    return response.data;
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    if (stage) {
+      return localContacts.filter(c => c.funnel_stage === stage);
+    }
+    return localContacts;
   },
   
   getById: async (id: number): Promise<Contact> => {
-    const response = await api.get(`/contacts/${id}`);
-    return response.data;
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const contact = localContacts.find(c => c.id === id);
+    if (!contact) throw new Error('Contact not found');
+    return contact;
   },
 
   create: async (contact: Omit<Contact, 'id'>): Promise<Contact> => {
-    const response = await api.post('/contacts/', contact);
-    return response.data;
+    await new Promise(resolve => setTimeout(resolve, 600));
+    const newContact: Contact = {
+      ...contact,
+      id: Math.max(0, ...localContacts.map(c => c.id)) + 1,
+      created_at: new Date().toISOString()
+    };
+    localContacts = [newContact, ...localContacts];
+    return newContact;
   },
 
   update: async (id: number, contact: Partial<Contact>): Promise<Contact> => {
-    const response = await api.put(`/contacts/${id}`, contact);
-    return response.data;
+    await new Promise(resolve => setTimeout(resolve, 400));
+    let updatedContact: Contact | null = null;
+    
+    localContacts = localContacts.map(c => {
+      if (c.id === id) {
+        updatedContact = { ...c, ...contact };
+        return updatedContact;
+      }
+      return c;
+    });
+
+    if (!updatedContact) throw new Error('Contact not found');
+    return updatedContact;
   },
 
   delete: async (id: number): Promise<void> => {
-    await api.delete(`/contacts/${id}`);
+    await new Promise(resolve => setTimeout(resolve, 500));
+    localContacts = localContacts.filter(c => c.id !== id);
   }
 };
