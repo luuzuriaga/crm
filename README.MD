@@ -115,8 +115,3 @@ Una vez levantado, accede a:
 - **Error de Conexión DB:** Asegúrese de que el archivo `.env` no tenga comillas en los valores.
 - **Scripts de Arranque (Windows):** Si `entrypoint.sh` falla, ejecute `sed -i 's/\r$//' backend/entrypoint.sh`.
 
----
-
-<p align="center">
-  Desarrollado con ❤️ para el ecosistema Startup.
-</p>
